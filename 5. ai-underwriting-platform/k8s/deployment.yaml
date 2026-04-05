@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-underwriting-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ai-underwriting
+  template:
+    metadata:
+      labels:
+        app: ai-underwriting
+    spec:
+      containers:
+      - name: ai-underwriting-container
+        image: <your-acr-name>.azurecr.io/ai-underwriting-app:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: AZURE_OPENAI_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: ai-secrets
+              key: openai-endpoint

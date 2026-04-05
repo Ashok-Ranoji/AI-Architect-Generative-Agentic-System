@@ -1,0 +1,19 @@
+fastapi==0.111.0
+uvicorn==0.30.1
+pydantic==2.7.1
+python-dotenv==1.0.1
+
+# LLM + embeddings (choose one provider)
+openai==1.35.7
+
+azure-search-documents==11.5.1
+azure-identity==1.16.0
+
+opencensus-ext-azure==1.1.13
+
+pytest==8.2.0
+gunicorn==22.0.0
+
+# HOW TO RUN
+pip install -r requirements.txt
+uvicorn app.main:app --reload
